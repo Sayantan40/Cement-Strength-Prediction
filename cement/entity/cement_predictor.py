@@ -11,21 +11,21 @@ class CementData:
 
     def __init__(self,
                 
-                cement: float,
+                cement:float,
                  
-                blast_furnace_slage: float,
+                blast_furnace_slag:float,
                  
-                fly_ash: float,
+                fly_ash:float,
                  
-                water: float,
+                water:float,
                  
-                superplasticizer: float,
+                superplasticizer:float,
                  
-                coarse_aggregate: float,
+                coarse_aggregate:float,
                  
-                fine_aggregate: float,
+                fine_aggregate:float,
                  
-                age: int,
+                age:int,
                  
                 concrete_compressive_strength: float = None
                  ):
@@ -34,7 +34,7 @@ class CementData:
             
             self.cement = cement
             
-            self.blast_furnace_slag = blast_furnace_slage
+            self.blast_furnace_slag = blast_furnace_slag
             
             self.fly_ash = fly_ash
             
@@ -76,7 +76,7 @@ class CementData:
                 
                 "fly_ash": [self.fly_ash],
                 
-                "total_rooms": [self.water],
+                "water": [self.water],
                 
                 "superplasticizer": [self.superplasticizer],
                 
@@ -84,7 +84,7 @@ class CementData:
                 
                 "fine_aggregate": [self.fine_aggregate],
                 
-                "age": [self.age],
+                "age": [self.age]
                 
                 }
             

@@ -9,7 +9,7 @@ from cement.exception import CementException
 import os, sys
 import json
 from cement.config.configuration import Configuartion
-from cement.constant import CONFIG_DIR, get_current_time_stamp
+from cement.constant import CONFIG_DIR, TRAINING_PIPELINE_ARTIFACT_DIR_KEY, get_current_time_stamp
 from cement.pipeline.pipeline import Pipeline
 from cement.entity.cement_predictor import CementPredictor, CementData
 from flask import send_file, abort, render_template
@@ -34,7 +34,7 @@ CONCRETE_COMPRESSIVE_STRENGTH_VALUE_KEY = "concrete_compressive_strength"
 app = Flask(__name__)
 
 
-@app.route('/artifact', defaults={'req_path': 'cement'})
+@app.route('/artifact', defaults={'req_path':'cement'})
 @app.route('/artifact/<path:req_path>')
 def render_artifact_dir(req_path):
     
@@ -139,7 +139,7 @@ def predict():
         age = int(request.form['age'])
         
 
-        cement_data = CementData(cement = cement,
+        cement_data = CementData(  cement = cement,
                                    
                                    blast_furnace_slag = blast_furnace_slag,
                                    
@@ -151,9 +151,9 @@ def predict():
                                    
                                    coarse_aggregate = coarse_aggregate,
                                    
-                                   fine_aggregates = fine_aggregate,
+                                   fine_aggregate = fine_aggregate,
                                    
-                                   age = age,
+                                   age = age
                                    
                                    )
         
@@ -161,11 +161,11 @@ def predict():
         
         cement_predictor = CementPredictor(model_dir=MODEL_DIR)
         
-        concrete_compressive_strength = cement_predictor.predict(X=cement_df)
+        concrete_compressive_strength = cement_predictor.predict(X = cement_df)
         
         context = {
             CEMENT_DATA_KEY: cement_data.get_cement_data_as_dict(),
-           CONCRETE_COMPRESSIVE_STRENGTH_VALUE_KEY: concrete_compressive_strength,
+           CONCRETE_COMPRESSIVE_STRENGTH_VALUE_KEY: concrete_compressive_strength
         }
         
         return render_template('predict.html', context=context)
@@ -270,4 +270,4 @@ def render_log_dir(req_path):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

@@ -140,11 +140,11 @@ class ModelTrainer:
 
             trained_model_file_path = self.model_trainer_config.trained_model_file_path
             
-            housing_model = CementEstimatorModel(preprocessing_object=preprocessing_obj,trained_model_object=model_object)
+            cement_model = CementEstimatorModel(preprocessing_object=preprocessing_obj,trained_model_object=model_object)
             
             logging.info(f"Saving model at path: {trained_model_file_path}")
             
-            save_object(file_path=trained_model_file_path,obj=housing_model)
+            save_object(file_path=trained_model_file_path,obj=cement_model)
 
 
             model_trainer_artifact=  ModelTrainerArtifact(is_trained=True,message = "Model Trained successfully",
