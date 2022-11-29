@@ -26,6 +26,7 @@
 
 # Application url:
 [CompressiveStrengthPredictor](https://cement-strength-prediction01.herokuapp.com/)
+### Sorry apllication is not working Heroku has taken down their free dynos 
 
 
 # Project Notebooks for Testing and Experimentation:
